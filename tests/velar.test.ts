@@ -10,7 +10,7 @@ describe("Velar tests", () => {
     console.log(
       await SimulationBuilder.new()
         .withSender("SP1GJSC4GG3MDA1KYZJYS9FEVCKHASR1N7089BEQK")
-        .useBlockHeight(169845)
+        .useBlockHeight(169842)
         .addContractDeploy({
           contract_name: "aggregator",
           source_code: fs.readFileSync("./contracts/aggregator.clar", "utf8"),
@@ -21,7 +21,7 @@ describe("Velar tests", () => {
           function_name: "swap",
           function_args: [
             Cl.uint(718344), // amount-in
-            Cl.some(Cl.uint(374241)), // maybe-amount-out-min
+            Cl.some(Cl.uint(370)), // maybe-amount-out-min
             Cl.none(), // maybe-alex-data
             Cl.some(
               Cl.tuple({
@@ -36,12 +36,12 @@ describe("Velar tests", () => {
                   "token-aeusdc",
                 ),
                 "token-in": Cl.contractPrincipal(
-                  "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
-                  "wstx",
-                ),
-                "token-out": Cl.contractPrincipal(
                   "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K",
                   "token-aeusdc",
+                ),
+                "token-out": Cl.contractPrincipal(
+                  "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
+                  "wstx",
                 ),
                 "share-fee-to": Cl.contractPrincipal(
                   "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",

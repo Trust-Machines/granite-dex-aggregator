@@ -7,6 +7,7 @@
 (define-public (swap
   (amount-in uint)
   (maybe-amount-out-min (optional uint))
+  (deadline uint)
   (maybe-alex-data (
     optional {
       token0: <ft-trait>,

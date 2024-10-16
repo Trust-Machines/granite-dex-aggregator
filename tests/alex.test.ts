@@ -10,7 +10,7 @@ describe("Alex tests", () => {
     console.log(
       await SimulationBuilder.new()
         .withSender("SP1KS4SMA7018Z39TH93A2BY0SDFAWBZ9C4NFTEY")
-        .useBlockHeight(169852)
+        .useBlockHeight(169850)
         .addContractDeploy({
           contract_name: "aggregator",
           source_code: fs.readFileSync("./contracts/aggregator.clar", "utf8"),
