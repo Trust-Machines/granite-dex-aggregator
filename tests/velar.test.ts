@@ -5,43 +5,43 @@ import { describe, it } from "vitest";
 
 describe("Velar tests", () => {
   it("perform a swap", async () => {
-    // tx: https://explorer.hiro.so/txid/0x6cc6c630616368197b2253fa56d75d83cab242e7c26877b8f66d8386474edc0b?chain=mainnet
+    // tx: https://explorer.hiro.so/txid/0x9ee111a686a913abcf4489baf98d476f942a77122d8dd8ced18f7aa54809402e?chain=mainnet
 
     console.log(
       await SimulationBuilder.new()
-        .withSender("SP1GJSC4GG3MDA1KYZJYS9FEVCKHASR1N7089BEQK")
-        .useBlockHeight(169842)
+        .withSender("SP3CTH7ZH5ESAA3VRZJZS78ERSMB457X0PNNRPF2R")
+        .useBlockHeight(170327)
         .addContractDeploy({
           contract_name: "aggregator",
           source_code: fs.readFileSync("./contracts/aggregator.clar", "utf8"),
           fee: 0,
         })
         .addContractCall({
-          contract_id: "SP1GJSC4GG3MDA1KYZJYS9FEVCKHASR1N7089BEQK.aggregator",
+          contract_id: "SP3CTH7ZH5ESAA3VRZJZS78ERSMB457X0PNNRPF2R.aggregator",
           function_name: "swap",
           function_args: [
-            Cl.uint(718344), // amount-in
-            Cl.some(Cl.uint(370)), // maybe-amount-out-min
+            Cl.uint(139165393), // amount-in
+            Cl.some(Cl.uint(5000000000)), // maybe-amount-out-min
             Cl.none(), // maybe-alex-data
             Cl.some(
               Cl.tuple({
                 // maybe-velar-data
-                id: Cl.uint(6),
+                id: Cl.uint(21),
                 token0: Cl.contractPrincipal(
+                  "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
+                  "velar-token",
+                ),
+                token1: Cl.contractPrincipal(
                   "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
                   "wstx",
                 ),
-                token1: Cl.contractPrincipal(
-                  "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K",
-                  "token-aeusdc",
-                ),
                 "token-in": Cl.contractPrincipal(
-                  "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K",
-                  "token-aeusdc",
+                  "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
+                  "wstx",
                 ),
                 "token-out": Cl.contractPrincipal(
                   "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",
-                  "wstx",
+                  "velar-token",
                 ),
                 "share-fee-to": Cl.contractPrincipal(
                   "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1",

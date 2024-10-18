@@ -1,5 +1,6 @@
 (use-trait share-fee-to-trait 'SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.univ2-share-fee-to-trait.share-fee-to-trait)
-(use-trait ft-trait 'SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.trait-sip-010.sip-010-trait)
+(use-trait alex-ft-trait 'SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.trait-sip-010.sip-010-trait)
+(use-trait velar-ft-trait 'SP2AKWJYC7BNY18W1XXKPGP0YVEK63QJG4793Z2D4.sip-010-trait-ft-standard.sip-010-trait)
 
 (define-constant ERR-VELAR-PARAMS (err u10))
 (define-constant ERR-ALEX-PARAMS (err u11))
@@ -7,21 +8,21 @@
 (define-public (swap
   (amount-in uint)
   (maybe-amount-out-min (optional uint))
-  (deadline uint)
+  ;; (deadline uint)
   (maybe-alex-data (
     optional {
-      token0: <ft-trait>,
-      token1: <ft-trait>,
+      token0: <alex-ft-trait>,
+      token1: <alex-ft-trait>,
       factor: uint
     }
   ))
   (maybe-velar-data (
     optional {
       id: uint,
-      token0: <ft-trait>,
-      token1: <ft-trait>,
-      token-in: <ft-trait>,
-      token-out: <ft-trait>,
+      token0: <velar-ft-trait>,
+      token1: <velar-ft-trait>,
+      token-in: <velar-ft-trait>,
+      token-out: <velar-ft-trait>,
       share-fee-to: <share-fee-to-trait>
     }
   ))
@@ -55,10 +56,10 @@
 
 (define-private (swap-with-velar
   (id uint)
-  (token0 <ft-trait>)
-  (token1 <ft-trait>)
-  (token-in <ft-trait>)
-  (token-out <ft-trait>)
+  (token0 <velar-ft-trait>)
+  (token1 <velar-ft-trait>)
+  (token-in <velar-ft-trait>)
+  (token-out <velar-ft-trait>)
   (share-fee-to <share-fee-to-trait>)
   (amt-in uint)
   (amt-out-min uint)
@@ -66,7 +67,7 @@
   (let
     (
       (result
-        (try! (as-contract (contract-call? 'SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.univ2-router swap-exact-tokens-for-tokens
+        (try! (contract-call? 'SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.univ2-router swap-exact-tokens-for-tokens
           id
           token0
           token1
@@ -75,7 +76,7 @@
           share-fee-to
           amt-in
           amt-out-min
-        )))
+        ))
       )
     )
     (ok (get amt-out result))
@@ -83,8 +84,8 @@
 )
 
 (define-private (swap-with-alex
-    (token-x-trait <ft-trait>)
-    (token-y-trait <ft-trait>)
+    (token-x-trait <alex-ft-trait>)
+    (token-y-trait <alex-ft-trait>)
     (factor uint)
     (dx uint)
     (min-dy (optional uint))
