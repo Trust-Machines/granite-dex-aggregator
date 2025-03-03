@@ -1,3 +1,11 @@
-# Granite Dex Aggregator
+# Granite Dex Aggregator For Liquidations
 
-Single swap interface for Stacks most popular AMMs
+
+## Deployed contracts
+
+alex_sbtc_to_aeusdc: SP1102XABHB2MY2YHD9CEVTA8K8MC1TY63ZF8WV5Z.alex_sbtc_to_aeusdc_1
+
+bitflow_sbtc_to_aeusdc: SP1102XABHB2MY2YHD9CEVTA8K8MC1TY63ZF8WV5Z.bitflow_sbtc_to_aeusdc_1
+
+velar_sbtc_to_aeusdc: SP1102XABHB2MY2YHD9CEVTA8K8MC1TY63ZF8WV5Z.velar_sbtc_to_aeusdc_1
+
