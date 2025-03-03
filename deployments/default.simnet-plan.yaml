@@ -140,4 +140,9 @@ plan:
             emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
             path: contracts/aggregator.clar
             clarity-version: 2
+        - emulated-contract-publish:
+            contract-name: alex_sbtc_to_aeusdc
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: contracts/alex_sbtc_to_aeusdc.clar
+            clarity-version: 2
       epoch: "2.5"
