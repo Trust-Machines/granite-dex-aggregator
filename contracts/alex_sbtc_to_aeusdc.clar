@@ -1,5 +1,3 @@
-(impl-trait .traits.multi-swap)
-
 (define-public (swap (sbtc uint))
     (let
         (
